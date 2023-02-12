@@ -16,3 +16,10 @@
 .App-link {
   color: #61dafb;
 }
+
+.Nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 50px;
+}
