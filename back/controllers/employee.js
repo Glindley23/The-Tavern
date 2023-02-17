@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Employees } = require('../../front/src/Components/Employees')
+const Employee  = require('../../front/src/Components/Employees')
 const employee = require('../models/employee')
 const db= require('../modules')
  
