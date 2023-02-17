@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
   })
 
   // GET: Add a new drink
-  router.get('/new', async(req,res)=>{
+  router.post('/new', async(req,res)=>{
     const drink = await Drink.find()
     res.render('new',{
         drinks
