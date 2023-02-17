@@ -7,5 +7,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .then(() => console.log('DB connected'))
     .catch(err => console.error(err));
 
-module.exports.Place = require('./places')
-module.exports.Comment = require('./comment')
+module.exports.Drink = require('./drink')
+module.exports.Employee = require('./employee')
+module.exports.Equipment = require('./equipment')
+module.exports.Food = require('./food')
+module.exports.Quest = require('./quest')
+module.exports.Room = require('./room')
