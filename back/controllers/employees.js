@@ -3,6 +3,7 @@ const router = require('express').Router()
 //const employees = require('../models/employee')
 const db= require('../models')
 
+//SHOW ALL EMPLOYEES
 router.get('/', (req, res) => {
     db.Employee.find()
         .then((employees) => {
@@ -14,13 +15,19 @@ router.get('/', (req, res) => {
           })
 })
 
-router.post('/', (req, res) => {
-    db.Employee.create(req.body)
-    .then (() =>
-        res.redirect('/employees')
-) 
+//CREATE NEW EMPLOYEE
+router.post('/', async (req, res) => {
+    const post = new db.Employee({
+        name: req.body.name,
+        job_title: req.body.job_title,
+        years_of_experience: req.body.years_of_experience,
+        portrait: req.body.portrait,
+        weekly_salary: req.body.weekly_salary
+    })
+    await db.Employee.create(post)
+    await post.save()
+    res.send(post)
 })
-
 
 //get by id
 router.get('/:id', async (req, res) => {
@@ -33,24 +40,33 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//PUT:
+//PUT: not working
 router.put('/:id', async(req,res)=>{
-    try {
-        const id = req.params.id;
-        const updatedData = req.body;
-        const options = { new: true };
-
-        const result = await db.Employee.findByIdAndUpdate(
-            id, updatedData, options
-        )
-
-        res.send(result)
+   try {
+    const post = await db.Employee.findOne({ _id: req.params.id })
+    if (req.body.name) {
+        post.name = req.body.name
     }
-    catch (error) {
-        res.status(400).json({ message: error.message })
+    if (req.body.job_title) {
+        post.job_title = req.body.job_title
     }
-  
-   })
+    if (req.body.years_of_experience) {
+        post.years_of_experience = req.body.years_of_experience
+    }
+    if (req.body.portrait) {
+        post.portrait = req.body.portrait
+    }
+    if (req.body.weekly_salary) {
+        post.weekly_salary = req.body.weekly_salary
+    }
+    await post.save()
+    res.send(post)
+    }   
+        catch {
+    res.status(404)
+    res.send({ error: "Post doesn't exist!" })
+}
+}) 
   
     // Delete employee
       router.delete('/:id', async (req,res)=> {

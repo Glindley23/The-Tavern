@@ -7,7 +7,8 @@ const db = require('./models')
 
 const app = express();
 
-
+//MIDDLEWARE
+app.use(express.json())
 
 // Controllers & Routes
 app.use('/employees', require('./controllers/employees'))
