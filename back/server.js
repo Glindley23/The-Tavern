@@ -11,6 +11,7 @@ const app = express();
 
 // Controllers & Routes
 app.use('/employees', require('./controllers/employees'))
+app.use('/equipment', require('./controllers/equipment'))
 
 //PORT
 app.listen(process.env.PORT, () => {
