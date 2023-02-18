@@ -11,6 +11,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 100px;
 }
 
 .App-link {
@@ -23,5 +24,10 @@
 }
 
 .Navbar {
-  margin-top: 100px;
+  margin-left: 100px;
+}
+
+#dropdown-basic-button {
+  background-color: #604020;
+  color: white;
 }

@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Component Import
@@ -25,33 +27,29 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Navbar  bg="p-3 mb-2 bg-light bg-gradient rounded-2" variant='light'expand="lg">
+      <Navbar className='app-header' variant='light'expand="lg">
       <Container>
-        <Nav className=' justify-content-center navbar ' activeKey='/' >
-          <Navbar.Brand><img id='tavern_brand' src='/imgs/tavern_logo.png'/></Navbar.Brand>
+        <Nav className='navbar justify-content-center' activeKey='/' >
+          <Navbar.Brand><img id='tavern_brand' src='/imgs/tavern_logo.png' alt='tavern logo'/></Navbar.Brand>
           <Nav.Item>
             <Nav.Link href='/'>Home</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href='/employees'>Employees</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href='/food'>Food Inventory</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to='/drink'>Drink Inventory</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to='/equipment'>Equipment</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to='/rooms'>Rooms</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to='/questboard'>Quest Board</Nav.Link>
-          </Nav.Item>
-        </Nav>
-        </Container>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href='/rooms'>Rooms</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href='/questboard'>Quest Board</Nav.Link>
+              </Nav.Item>
+              <DropdownButton id="dropdown-basic-button" variant='secondary' title="Inventory">
+                <Dropdown.Item href="/food">Food</Dropdown.Item>
+                <Dropdown.Item href="/drink">Drinks</Dropdown.Item>
+                <Dropdown.Item href="/equipment">Equipment</Dropdown.Item>
+              </DropdownButton>
+            </Nav>
+          </Container>
         </Navbar>
 
         <div className='display'>
