@@ -2,6 +2,7 @@ import React, { useEffect, useState, } from "react"
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Card from 'react-bootstrap/Card';
+//import { Redirect } from 'react-router-dom'
 //import DropdownButton from "react-bootstrap/esm/DropdownButton";
 //import Dropdown from "react-bootstrap/esm/Dropdown";
 import '../App.css';
@@ -11,7 +12,16 @@ import '../App.css';
 function newEmployee() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
-
+function deleteEmployee(employee_id) {
+    fetch(`http://localhost:8080/employees/${employee_id}`, {method: 'DELETE'})
+            .then(
+                response => {
+                    return (
+                        window.location.reload()
+                    )
+                
+                })
+    }
 // Close the dropdown menu if the user clicks outside of it
 /* window.onclick = function (event) {
     if (!event.target.matches('.new-button')) {
@@ -58,12 +68,8 @@ function Employees() {
                     </Card.Text>
                     <ButtonGroup variant='secondary'>
                         <Button variant="warning">Edit</Button>
-                        <Button variant="danger">Delete</Button>
-                        
+                        <Button onClick={() => deleteEmployee(employee._id)} variant="danger">Delete</Button> 
                     </ButtonGroup>
-                    <form action={`/employees/${employee._id}?_method=DELETE`} method='POST'>
-                <input type='submit' value='DELETE' />
-            </form>
                 </Card.Body>
             </Card>
         )
