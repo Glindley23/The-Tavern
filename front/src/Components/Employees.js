@@ -35,13 +35,48 @@ function Employees() {
     })
     //page render
     return (
-            <main>
-                <h1>Employee Management</h1>
-                <div className='row'>
-                    {employeeList}
-
+        <main>
+            <h1>Employee Management</h1>
+            <button className='new'>New Employee</button>
+            <form method="POST" action='/employees'>
+                <div className='form-group'>
+                    <label htmlFor="name">
+                        Name:
+                        <input className='form-control' id='name' type="text" name='name' required />
+                    </label>
                 </div>
-            </main>
+                <div className='form-group'>
+                    <label htmlFor='job_title'>
+                        Job Title:
+                        <input className='form-control' id='job_title' type="text" name='job_title' required />
+                    </label>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='years_of_experience'>
+                        Years of experience:
+                        <input className='form-control' id='years_of_experience' type="text" name='years_of_experience' required />
+                    </label>
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='portrait'>
+                        Portrait
+                        <input className='form-control' id='portrait' type="url" name='portrait' />
+                    </label>
+                </div>
+                
+                <div className='form-group'>
+                    <label htmlFor='weekly_salary'>
+                        Weekly Salary:
+                        <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
+                    </label>
+                </div>
+                <input type="submit" value="Add" />
+            </form>
+            
+            <div className='row'>
+                {employeeList}
+            </div>
+        </main>
     )
 }
 
