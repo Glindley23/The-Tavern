@@ -8,7 +8,6 @@ href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 crossorigin="anonymous">
 </link>
-const mongoose = require('mongoose')
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,9 +16,5 @@ root.render(
   </React.StrictMode>
 );
 
-mongoose.set('strictQuery', true)
-// db connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => console.log('DB connected'))
-    .catch(err => console.error(err));
+
 
