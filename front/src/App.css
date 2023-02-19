@@ -27,10 +27,30 @@
   margin-left: 100px;
 }
 
-#dropdown-basic-button {
+.dropdown-basic-button {
   background-color: #604020;
   color: white;
+  border-radius: 7px;
 }
-
-
+.dropdown-basic-button:hover, .dropdown-basic-button:focus {
+  background-color: #d4c398;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  justify-content: center;
+  display: inline-block;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #d4c398;
+  min-width: 230px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/* Show the dropdown menu (use JS to add this class to the 
+.dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
 
