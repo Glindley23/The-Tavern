@@ -44,7 +44,7 @@ function Employees() {
                 <h3>
                     Job Title: {employee.job_title}
                 </h3>
-                <img id='index-img' src={employee.portrait} alt={employee.portrait} />
+                <img id='employee-portrait' src={employee.portrait} alt={employee.portrait} />
                 <h3>
                     Years of experience: {employee.years_of_experience}
                 </h3>

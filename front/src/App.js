@@ -1,3 +1,4 @@
+//Modules and Globals
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -27,15 +28,15 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Navbar variant='light'expand="lg">
-      <Container>
-        <Nav className='navbar' activeKey='/' >
-          <Navbar.Brand><img id='tavern_brand' src='/imgs/tavern_logo.png' alt='tavern logo'/></Navbar.Brand>
-          <Nav.Item>
-            <Nav.Link href='/'>Home</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href='/employees'>Employees</Nav.Link>
+        <Navbar variant='light' expand="lg">
+          <Container>
+            <Nav className='navbar' activeKey='/' >
+              <Navbar.Brand><img id='tavern_brand' src='/imgs/tavern_logo.png' alt='tavern logo' /></Navbar.Brand>
+              <Nav.Item>
+                <Nav.Link href='/'>Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href='/employees'>Employees</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href='/rooms'>Rooms</Nav.Link>
@@ -43,11 +44,11 @@ function App() {
               <Nav.Item>
                 <Nav.Link href='/questboard'>Quest Board</Nav.Link>
               </Nav.Item>
-              <DropdownButton className="dropdown-basic-button"  variant="light" title="Inventory">
+              <DropdownButton className="dropdown-basic-button" variant="light" title="Inventory">
                 <div className='dropdown-Nav'>
-                <Dropdown.Item href="/food">Food</Dropdown.Item>
-                <Dropdown.Item href="/drink">Drinks</Dropdown.Item>
-                <Dropdown.Item href="/equipment">Equipment</Dropdown.Item>
+                  <Dropdown.Item href="/food">Food</Dropdown.Item>
+                  <Dropdown.Item href="/drink">Drinks</Dropdown.Item>
+                  <Dropdown.Item href="/equipment">Equipment</Dropdown.Item>
                 </div>
               </DropdownButton>
             </Nav>
