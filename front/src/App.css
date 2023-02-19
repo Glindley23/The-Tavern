@@ -11,15 +11,26 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 100px;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-.Nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding-top: 50px;
+#tavern_brand {
+  height: 90px;
+  width: 90px
 }
+
+.Navbar {
+  margin-left: 100px;
+}
+
+#dropdown-basic-button {
+  background-color: #604020;
+  color: white;
+}
+
+
+
