@@ -1,6 +1,4 @@
 const router = require('express').Router()
-//const Employees  = require('../../front/src/Components/Employees')
-//const employees = require('../models/employee')
 const db= require('../models')
 
 //SHOW ALL EMPLOYEES
@@ -40,7 +38,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//PUT: not working
+//PUT: Update Employee
 router.put('/:id', async(req,res)=>{
    try {
     const post = await db.Employee.findOne({ _id: req.params.id })
@@ -68,15 +66,15 @@ router.put('/:id', async(req,res)=>{
 }
 }) 
   
-    // Delete employee
-      router.delete('/:id', async (req,res)=> {
-        try {
-            const id = req.params.id;
-            const data = await db.Employee.findByIdAndDelete(id)
-            res.send(`Employee with ${data.name} has been deleted...`)
+// Delete employee
+router.delete('/:id', async (req,res)=> {
+    try {
+        const id = req.params.id;
+        const data = await db.Employee.findByIdAndDelete(id)
+        res.send(`Employee with ${data.name} has been deleted...`)
         }
-        catch (error) {
-            res.status(400).json({ message: error.message})
+    catch (error) {
+        res.status(400).json({ message: error.message})
         }
     })
           

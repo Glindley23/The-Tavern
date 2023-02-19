@@ -13,6 +13,9 @@ app.use(express.json())
 // Controllers & Routes
 app.use('/employees', require('./controllers/employees'))
 app.use('/equipment', require('./controllers/equipment'))
+app.use('/food', require('./controllers/food'))
+app.use('/quest', require('./controllers/quest'))
+app.use('/room', require('./controllers/room'))
 
 //PORT
 app.listen(process.env.PORT, () => {
