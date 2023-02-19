@@ -1,6 +1,4 @@
 const router = require('express').Router()
-//const Employees  = require('../../front/src/Components/Employees')
-//const employees = require('../models/employee')
 const db= require('../models')
 
 //SHOW ALL EMPLOYEES

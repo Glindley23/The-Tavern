@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const db= require('../models')
 
-//Shaw all equpment
+//Show all equpment
 router.get('/', (req, res) => {
     db.Equipment.find()
         .then((equipment) => {

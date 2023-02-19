@@ -14,6 +14,10 @@ app.use(express.json())
 app.use('/employees', require('./controllers/employees'))
 app.use('/equipment', require('./controllers/equipment'))
 
+
+
+app.use('/drink',require('./controllers/drink'))
+
 //PORT
 app.listen(process.env.PORT, () => {
     console.log('listening on port 8080!')
