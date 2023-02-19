@@ -72,7 +72,6 @@ router.delete('/:id', async (req,res)=> {
         const id = req.params.id;
         const data = await db.Employee.findByIdAndDelete(id)
         res.send(`Employee with ${data.name} has been deleted...`)
-        res.redirect('/employees')
         }
     catch (error) {
         res.status(400).json({ message: error.message})
