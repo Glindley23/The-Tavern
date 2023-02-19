@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Navbar variant='light'expand="lg">
+      <Navbar className='nav' variant='light'expand="lg">
       <Container>
         <Nav className='navbar' activeKey='/' >
           <Navbar.Brand><img id='tavern_brand' src='/imgs/tavern_logo.png' alt='tavern logo'/></Navbar.Brand>
