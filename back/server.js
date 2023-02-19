@@ -17,6 +17,10 @@ app.use('/food', require('./controllers/food'))
 app.use('/quest', require('./controllers/quest'))
 app.use('/room', require('./controllers/room'))
 
+
+
+app.use('/drink',require('./controllers/drink'))
+
 //PORT
 app.listen(process.env.PORT, () => {
     console.log('listening on port 8080!')
