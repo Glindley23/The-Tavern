@@ -23,10 +23,6 @@ function deleteEmployee(employee_id) {
                 })
     }
 
-function pageReload() {
-    window.location.replace('http://localhost:3000/employees')
-}
-
 function Employees() {
     //setting state for employee data
     const [employeesData, setEmployeesData] = useState([])
@@ -90,7 +86,7 @@ function Employees() {
                         <div className='form-group'>
                             <label htmlFor='years_of_experience'>
                                 Years of experience:
-                                <input className='form-control' id='years_of_experience' type="text" name='years_of_experience' required />
+                                <input className='form-control' id='years_of_experience' type="num" name='years_of_experience' required />
                             </label>
                         </div>
                         <div className='form-group'>
@@ -103,7 +99,7 @@ function Employees() {
                         <div className='form-group'>
                             <label htmlFor='weekly_salary'>
                                 Weekly Salary:
-                                <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
+                                <input className='form-control' id='weekly_salary' type="num" name='weekly_salary' required />
                             </label>
                         </div>
                         <Button as="input" type="submit" value="Add" href="http://localhost:3000/employees"/>
