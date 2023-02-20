@@ -23,16 +23,9 @@ function deleteEmployee(employee_id) {
                 })
     }
 
-// function createEmployee() {
-//     const newEmployee = {
-//         method: 'POST',
-//         header: { 'Content-Type': 'application/json'},
-//         body: JSON.stringify({title: 'New Employee'})
-//     };
-
-//     const response =  fetch ('http//localhost:3001/employees/', newEmployee);
-//     const data =  response.json()
-// }
+function pageReload() {
+    window.location.replace('http://localhost:3000/employees')
+}
 
 function Employees() {
     //setting state for employee data
@@ -113,7 +106,7 @@ function Employees() {
                                 <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
                             </label>
                         </div>
-                        <input type="submit" value="Add" />
+                        <Button as="input" type="submit" value="Add" href="http://localhost:3000/employees"/>
                     </form>
                 </div>
             </div>
