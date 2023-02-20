@@ -22,19 +22,7 @@ function deleteEmployee(employee_id) {
                 
                 })
     }
-// Close the dropdown menu if the user clicks outside of it
-/* window.onclick = function (event) {
-    if (!event.target.matches('.new-button')) {
-        let dropdowns = document.getElementsByClassName("dropdown-content");
-        let i;
-        for (i = 0; i < dropdowns.length; i++) {
-            let openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('.show')) {
-                openDropdown.classList.remove('.show');
-            }
-        }
-    }
-} */
+
 function Employees() {
     //setting state for employee data
     const [employeesData, setEmployeesData] = useState([])
@@ -98,7 +86,7 @@ function Employees() {
                         <div className='form-group'>
                             <label htmlFor='years_of_experience'>
                                 Years of experience:
-                                <input className='form-control' id='years_of_experience' type="text" name='years_of_experience' required />
+                                <input className='form-control' id='years_of_experience' type="num" name='years_of_experience' required />
                             </label>
                         </div>
                         <div className='form-group'>
@@ -111,7 +99,7 @@ function Employees() {
                         <div className='form-group'>
                             <label htmlFor='weekly_salary'>
                                 Weekly Salary:
-                                <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
+                                <input className='form-control' id='weekly_salary' type="num" name='weekly_salary' required />
                             </label>
                         </div>
                         <input type="submit" value="Add" />
