@@ -9,11 +9,11 @@ import '../App.css';
 
 
 //When user clicks on button, toggle between hiding or showing new form
-function newEmployee() {
+function employeeForm() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
 function deleteEmployee(employee_id) {
-    fetch(`http://localhost:8080/employees/${employee_id}`, {method: 'DELETE'})
+    fetch(`http://localhost:3001/employees/${employee_id}`, {method: 'DELETE'})
             .then(
                 response => {
                     return (
@@ -23,12 +23,16 @@ function deleteEmployee(employee_id) {
                 })
     }
 
+function pageReload() {
+    window.location.replace('http://localhost:3000/employees')
+}
+
 function Employees() {
     //setting state for employee data
     const [employeesData, setEmployeesData] = useState([])
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:8080/employees')
+        fetch('http://localhost:3001/employees')
             .then(
                 response => {
                     return response = response.json()
@@ -68,9 +72,9 @@ function Employees() {
         <main>
             <h1>Employee List</h1>
             <div className="dropdown">
-                <Button onClick={newEmployee} className='new-button dropdown-basic-button' variant="outline-secondary">New Employee</Button>
+                <Button onClick={employeeForm} className='new-button dropdown-basic-button' variant="outline-secondary">New Employee</Button>
                 <div id='dropdownForm' className="dropdown-content">
-                    <form method="POST" className='form' action='/employees'>
+                    <form method="POST" className='form' action='http://localhost:3001/employees'>
                         <div className='form-group'>
                             <label htmlFor="name">
                                 Name:
@@ -86,7 +90,7 @@ function Employees() {
                         <div className='form-group'>
                             <label htmlFor='years_of_experience'>
                                 Years of experience:
-                                <input className='form-control' id='years_of_experience' type="num" name='years_of_experience' required />
+                                <input className='form-control' id='years_of_experience' type="text" name='years_of_experience' required />
                             </label>
                         </div>
                         <div className='form-group'>
@@ -99,10 +103,10 @@ function Employees() {
                         <div className='form-group'>
                             <label htmlFor='weekly_salary'>
                                 Weekly Salary:
-                                <input className='form-control' id='weekly_salary' type="num" name='weekly_salary' required />
+                                <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
                             </label>
                         </div>
-                        <input type="submit" value="Add" />
+                        <Button as="input" type="submit" value="Add" href="http://localhost:3000/employees"/>
                     </form>
                 </div>
             </div>
