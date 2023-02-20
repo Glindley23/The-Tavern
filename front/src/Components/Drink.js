@@ -21,7 +21,7 @@ function deleteDrink(drink_id) {
     }
 
 function Drink() {
-    //setting state for employee data
+    //setting state for drink data
     const [drinkData, setDrinkData] = useState([])
     //fetching data from backend
     useEffect(() => {
