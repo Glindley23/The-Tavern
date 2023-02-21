@@ -9,11 +9,11 @@ import '../App.css';
 
 
 //When user clicks on button, toggle between hiding or showing new form
-function newEmployee() {
+function employeeForm() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
 function deleteEmployee(employee_id) {
-    fetch(`http://localhost:8080/employees/${employee_id}`, {method: 'DELETE'})
+    fetch(`http://localhost:3001/employees/${employee_id}`, {method: 'DELETE'})
             .then(
                 response => {
                     return (
@@ -22,25 +22,13 @@ function deleteEmployee(employee_id) {
                 
                 })
     }
-// Close the dropdown menu if the user clicks outside of it
-/* window.onclick = function (event) {
-    if (!event.target.matches('.new-button')) {
-        let dropdowns = document.getElementsByClassName("dropdown-content");
-        let i;
-        for (i = 0; i < dropdowns.length; i++) {
-            let openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('.show')) {
-                openDropdown.classList.remove('.show');
-            }
-        }
-    }
-} */
+
 function Employees() {
     //setting state for employee data
     const [employeesData, setEmployeesData] = useState([])
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:8080/employees')
+        fetch('http://localhost:3001/employees')
             .then(
                 response => {
                     return response = response.json()
@@ -80,8 +68,9 @@ function Employees() {
         <main>
             <h1>Employee List</h1>
             <div className="dropdown">
-                <Button onClick={newEmployee} className='new-button dropdown-basic-button' variant="outline-secondary">New Employee</Button>
+                <Button onClick={employeeForm} className='new-button dropdown-basic-button' variant="outline-secondary">New Employee</Button>
                 <div id='dropdownForm' className="dropdown-content">
+
                     <form method="POST" className='form' action='http://localhost:8080/employees'>
                         <div className='form-group'>
                             <label htmlFor="name">
@@ -114,7 +103,7 @@ function Employees() {
                                 <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
                             </label>
                         </div>
-                        <input type="submit" value="Add" />
+                        <Button as="input" type="submit" value="Add" href="http://localhost:3000/employees"/>
                     </form>
                 </div>
             </div>
