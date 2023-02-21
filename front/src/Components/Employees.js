@@ -24,14 +24,6 @@ function deleteEmployee(employee_id) {
                 })
     }
 
-
-
-
-function HandleClick () {
-    const navigate = useNavigate();
-    navigate('http://localhost:3000/employees')
-}
-
 function Employees() {
     //setting state for employee data
     const [employeesData, setEmployeesData] = useState([])
@@ -79,7 +71,8 @@ function Employees() {
             <div className="dropdown">
                 <Button onClick={employeeForm} className='new-button dropdown-basic-button' variant="outline-secondary">New Employee</Button>
                 <div id='dropdownForm' className="dropdown-content">
-                    <form method="POST" className='form' action='http://localhost:3001/employees'>
+
+                    <form method="POST" className='form' action='http://localhost:8080/employees'>
                         <div className='form-group'>
                             <label htmlFor="name">
                                 Name:

@@ -75,7 +75,7 @@ function Equipment() {
             <div className="dropdown">
                 <Button onClick={newEquipment} className='new-button dropdown-basic-button' variant="outline-secondary">New Equipment</Button>
                 <div id='dropdownForm' className="dropdown-content">
-                    <form method="POST" className='form' action='/equipment'>
+                    <form method="POST" className='form' action='http://localhost:8080/equipment'>
                         <div className='form-group'>
                             <label htmlFor="name">
                                 Name:
