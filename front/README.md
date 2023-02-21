@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+The Tavern
+An App by James Lindley, Melik Melikyan, and Andrew Rink
+Submitted 2/21/2022
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+ABOUT:
+The Tavern is a restaurant management style app for a fantasy tavern.  
 
-In the project directory, you can run:
+This project allows a manager of this tavern to manage all aspects of day to day operations.
+You can manage Employees, Inventory, Quests, and Rooms on this application.  
 
-### `npm start`
+In a practical sense, one could update information, add new inventory, hire/fire new employees, and update/remove quests and/or room statuses.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We were inspired by our mutual interest in fantasy settings to make a fun app based around everyone's favorite fantasy meeting spot.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+TO USE:
+Navigation is simple point and click.  To add a new item/employee/quest etc, simply click the add button and fill in the fields, then click the submit button.  To delete an item, click delete.  
 
-### `npm test`
+TECHNOLOGIES USED:
+We utilized MongoDB to host our database, with express and mongoose to tie it together on the backend.  We use React to create the frontend, along with React-Bootstrap and Bootstrap for styling.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+KNOWN ISSUES/MISSING FEATURES
+1. When adding a new object on any page, page must be manually refreshed to show new item, otherwise page will get stuck in loading state.  
+2. Currently, the edit feature is not functional on the front end.  It is functional using postman on the backend.    

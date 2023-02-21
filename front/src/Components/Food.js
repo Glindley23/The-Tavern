@@ -10,7 +10,7 @@ function newFood() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
 function deleteFood(food_id) {
-    fetch(`http://localhost:8080/food/${food_id}`, {method: 'DELETE'})
+    fetch(`http://localhost:3001/food/${food_id}`, {method: 'DELETE'})
             .then(
                 response => {
                     return (
@@ -25,7 +25,7 @@ function Food() {
     const [foodData, setFoodData] = useState([])
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:8080/food')
+        fetch('http://localhost:3001/food')
             .then(
                 response => {
                     return response = response.json()
