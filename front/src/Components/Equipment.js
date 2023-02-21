@@ -10,7 +10,7 @@ function newEquipment() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
 function deleteEquipment(equipment_id) {
-    fetch(`http://localhost:8080/equipment/${equipment_id}`, {method: 'DELETE'})
+    fetch(`http://localhost:3001/equipment/${equipment_id}`, {method: 'DELETE'})
             .then(
                 response => {
                     return (
@@ -25,7 +25,7 @@ function Equipment() {
     const [equipmentData, setEquipmentData] = useState([])
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:8080/equipment')
+        fetch('http://localhost:3001/equipment')
             .then(
                 response => {
                     return response = response.json()
