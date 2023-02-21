@@ -24,7 +24,6 @@ router.post('/', async (req, res) => {
     })
     await db.Employee.create(post)
     await post.save()
-    res.redirect('/employees')
 })
 
 //get by id
