@@ -69,7 +69,7 @@ function Drink() {
             <div className="dropdown">
                 <Button onClick={newDrink} className='new-button dropdown-basic-button' variant="outline-secondary">New Drink</Button>
                 <div id='dropdownForm' className="dropdown-content">
-                    <form method="POST" className='form' action='/drink'>
+                    <form method="POST" className='form' action='http://localhost:8080/drink'>
                         <div className='form-group'>
                             <label htmlFor="name">
                                 Name:

@@ -71,7 +71,7 @@ function Food() {
             <div className="dropdown">
                 <Button onClick={newFood} className='new-button dropdown-basic-button' variant="outline-secondary">New Food</Button>
                 <div id='dropdownForm' className="dropdown-content">
-                    <form method="POST" className='form' action='/food'>
+                    <form method="POST" className='form' action='http://localhost:8080/food'>
                         <div className='form-group'>
                             <label htmlFor="name">
                                 Name:
@@ -89,13 +89,13 @@ function Food() {
                         <div className='form-group'>
                             <label htmlFor='weekly_salary'>
                                 Cost To Buy:
-                                <input className='form-control' id='cost_to_buy' type="num" name='cost_to_buy' required />
+                                <input className='form-control' id='cost_to_buy' type="text" name='cost_to_buy' required />
                             </label>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='sell_price'>
                                 Sell Price:
-                                <input className='form-control' id='sell_price' type="num" name='sell_price' required />
+                                <input className='form-control' id='sell_price' type="text" name='sell_price' required />
                             </label>
                         </div>
 
@@ -105,6 +105,8 @@ function Food() {
             </div>
             <div className='row'>
                 {foodList}
+
+                console.log({foodList})
             </div>
 
         </main>
