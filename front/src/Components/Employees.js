@@ -2,6 +2,7 @@ import React, { useEffect, useState, } from "react"
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom'
 //import { Redirect } from 'react-router-dom'
 //import DropdownButton from "react-bootstrap/esm/DropdownButton";
 //import Dropdown from "react-bootstrap/esm/Dropdown";
@@ -103,7 +104,7 @@ function Employees() {
                                 <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
                             </label>
                         </div>
-                        <Button as="input" type="submit" value="Add" href="http://localhost:3000/employees"/>
+                        <Button as="input" type="submit" value="Add"/>
                     </form>
                 </div>
             </div>

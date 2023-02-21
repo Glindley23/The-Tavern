@@ -23,7 +23,6 @@ router.post('/', async (req, res) => {
     })
     await db.Quest.create(post)
     await post.save()
-    res.send(post)
 })
 
 //get quest by id

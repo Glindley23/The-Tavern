@@ -10,7 +10,7 @@ function newDrink() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
 function deleteDrink(drink_id) {
-    fetch(`http://localhost:8080/drink/${drink_id}`, {method: 'DELETE'})
+    fetch(`http://localhost:3001/drink/${drink_id}`, {method: 'DELETE'})
             .then(
                 response => {
                     return (
@@ -25,7 +25,7 @@ function Drink() {
     const [drinkData, setDrinkData] = useState([])
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:8080/drink')
+        fetch('http://localhost:3001/drink')
             .then(
                 response => {
                     return response = response.json()

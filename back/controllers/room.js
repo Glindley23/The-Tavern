@@ -23,7 +23,6 @@ router.post('/', async (req, res) => {
     })
     await db.Room.create(post)
     await post.save()
-    res.send(post)
 })
 
 //get room by id
