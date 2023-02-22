@@ -1,8 +1,8 @@
 //Modules and Globals
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +15,7 @@ import Employees from './Components/Employees';
 import Equipment from './Components/Equipment';
 import Rooms from './Components/Rooms';
 import QuestBoard from './Components/QuestBoard';
+import NewForm from './Components/NewForm';
 import './App.css';
 <link
   rel="stylesheet"
@@ -64,6 +65,7 @@ function App() {
             <Route path='/equipment' element={<Equipment />} />
             <Route path='/rooms' element={<Rooms />} />
             <Route path='/questboard' element={<QuestBoard />} />
+            <Route path= '/new' component={ NewForm } />
           </Routes>
         </div>
       </Router>
