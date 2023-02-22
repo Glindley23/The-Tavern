@@ -1,68 +1,28 @@
 {
-  
   "dependencies": {
-  
-    
-  "cors": "^2.8.5",
-  
-    
-  "dotenv": "^16.0.3",
-  
-    
-  "method-override": "^3.0.0",
-  
-    
-  "mongoose": "^6.9.2"
-  
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.9.2"
   },
-  
   "scripts": {
-  
-    
-  "dev": "npx nodemon server.js",
-  
-    
-  "start": "node server.js",
-  
-    
-  "server": "node-env-run server.js --exec nodemon | pino-colada"
-  
+    "dev": "npx nodemon server.js",
+    "start": "node server.js",
+    "server": "node-env-run server.js --exec nodemon | pino-colada"
   },
-  
   "name": "back",
-  
   "version": "1.0.0",
-  
   "main": "server.js",
-  
   "author": "",
-  
   "license": "ISC",
-  
   "description": "",
-  
   "devDependencies": {
-  
-    
-  "body-parser": "^1.20.1",
-  
-    
-  "express": "^4.18.2",
-  
-    
-  "express-pino-logger": "^7.0.0",
-  
-    
-  "node-env-run": "^4.0.2",
-  
-    
-  "nodemon": "^2.0.20",
-  
-    
-  "npm-run-all": "^4.1.5",
-  
-    
-  "pino-colada": "^2.2.2"
-  
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "express-pino-logger": "^7.0.0",
+    "node-env-run": "^4.0.2",
+    "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
+    "pino-colada": "^2.2.2"
   }
 }
