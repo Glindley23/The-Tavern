@@ -2,7 +2,7 @@ import React, { useEffect, useState, } from "react"
 import { Button, ButtonGroup, Modal, Card } from 'react-bootstrap'
 import '../App.css';
 import NewEmployeeForm from './NewEmployeeForm'
-
+import NewEditForm from "./NewEditForm";
 
 
 
@@ -26,13 +26,9 @@ function Employees() {
         weekly_salary: ''
     })
 
-
-
-
-
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:8080/employees')
+        fetch('http://localhost:3001/employees')
             .then(
                 response => {
                     return response = response.json()
@@ -44,7 +40,7 @@ function Employees() {
 
     const handleAdd = (event) => {
         event.preventDefault();
-        fetch("http://localhost:8080/employees", {
+        fetch("http://localhost:3001/employees", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,7 +63,7 @@ function Employees() {
     }    
 
     function deleteEmployee(employee_id) {
-        fetch(`http://localhost:8080/employees/${employee_id}`, { method: 'DELETE' })
+        fetch(`http://localhost:3001/employees/${employee_id}`, { method: 'DELETE' })
             .then(
                 response => {
                     return (
@@ -76,6 +72,24 @@ function Employees() {
 
                 })
     }
+
+    const handleEdit = (employee_id, updatedEmployee) => {
+        fetch(`http://localhost:3001/employees/${employee_id}`, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json",},
+            body: JSON.stringify(updatedEmployee),
+        })
+          .then(() => {
+            const updatedEmployee = employeesData.map((employee) => {
+              if (employee._id === employee_id) {
+                return { ...employee, ...updatedEmployee };
+              }
+              return employeesData;
+            });
+            setEmployeesData(updatedEmployee);
+          })
+          .catch((error) => console.error(error));
+      };  
 
     let employeeList = employeesData.map((employee, index) => {
         return (
