@@ -67,6 +67,7 @@
 
 .employee-card {
   margin-left: 25px;
+  margin-bottom: 25px;
   background-color:#d4c398;
 }
 
@@ -86,4 +87,17 @@
   font-weight: 1000;
   color: white;
   padding-top: 100px;
+}
+
+.componentText {
+  -webkit-text-fill-color: #5b2522;
+  -webkit-text-stroke: 1px;
+  font-size: 50px;
+  font-weight: 1000;
+  color: white;
+}
+
+.newFormButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

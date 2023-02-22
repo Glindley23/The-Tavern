@@ -1,19 +1,10 @@
 import React, { useEffect, useState, } from "react"
 import { Button, ButtonGroup, Modal, Card } from 'react-bootstrap'
 import '../App.css';
+import NewEmployeeForm from './NewEmployeeForm'
 
 
 
-function deleteEmployee(employee_id) {
-    fetch(`http://localhost:8080/employees/${employee_id}`, { method: 'DELETE' })
-        .then(
-            response => {
-                return (
-                    window.location.reload()
-                )
-
-            })
-}
 
 
 function Employees() {
@@ -34,7 +25,10 @@ function Employees() {
         portrait: '',
         weekly_salary: ''
     })
-     
+
+
+
+
 
     //fetching data from backend
     useEffect(() => {
@@ -46,8 +40,43 @@ function Employees() {
                     setEmployeesData(data)
                 })
     }
+        , []);
 
-        , [])
+    const handleAdd = (event) => {
+        event.preventDefault();
+        fetch("http://localhost:8080/employees", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newEmployee)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            setEmployeesData([...employeesData, data]);
+            setNewEmployee({
+                name: '',
+                job_title: '',
+                years_of_experience: '',
+                portrait: '',
+                weekly_salary: ''
+            });
+            setFormShow(false); 
+        })
+        .catch((error) => console.error(error));
+    }    
+
+    function deleteEmployee(employee_id) {
+        fetch(`http://localhost:8080/employees/${employee_id}`, { method: 'DELETE' })
+            .then(
+                response => {
+                    return (
+                        window.location.reload()
+                    )
+
+                })
+    }
+
     let employeeList = employeesData.map((employee, index) => {
         return (
             <Card className='employee-card' key={index} style={{ width: '18rem' }}>
@@ -63,11 +92,14 @@ function Employees() {
                     <Card.Text>
                         Weekly Salary: {employee.weekly_salary}
                     </Card.Text>
+                    
+                </Card.Body>
+                <Card.Footer>
                     <ButtonGroup variant='secondary'>
-                        <Button variant="warning">Edit</Button>
+                        <Button variant="success">Edit</Button>
                         <Button onClick={() => deleteEmployee(employee._id)} variant="danger">Delete</Button>
                     </ButtonGroup>
-                </Card.Body>
+                </Card.Footer>
             </Card>
         )
     })
@@ -75,24 +107,18 @@ function Employees() {
     //page render
     return (
         <main>
-            <h1>Employee List</h1>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+            <h1 className="componentText">Employee List</h1>
+            <Button variant="warning" className='newFormButton' onClick={handleShow}>
+                Add New Employee
             </Button>
 
             <Modal show={formShow} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Header>
+                    <Modal.Title>Employee Information</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" type='submit'>
-                        Add Employee
-                    </Button>
-                </Modal.Footer>
+                <Modal.Body><NewEmployeeForm key="employee._id" handleAdd={handleAdd} newEmployee={newEmployee} 
+                setNewEmployee={setNewEmployee} formShow={formShow} setFormShow={setFormShow}/>
+                </Modal.Body>
             </Modal>
             <div className='row'>
                 {employeeList}
