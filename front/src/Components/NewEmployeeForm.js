@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Button } from 'react-bootstrap';
 import '../App.css';
 
-function NewForm({ handleAdd, newEmployee, setNewEmployee }) {
+function NewEmployeeForm({ handleAdd, newEmployee, setNewEmployee }) {
     const handleSubmit = (event) => {
         handleAdd(event);
     };
@@ -18,13 +18,14 @@ function NewForm({ handleAdd, newEmployee, setNewEmployee }) {
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formName">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Name (First, Last)</Form.Label>
                 <Form.Control 
                 type="text" 
                 placeholder="Enter name"
                 name='name'
                 value={newEmployee.name}
-                onChange={handleChange} />
+                onChange={handleChange} 
+                required/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formJobTitle">
                 <Form.Label>Job Title</Form.Label>
@@ -33,36 +34,40 @@ function NewForm({ handleAdd, newEmployee, setNewEmployee }) {
                 placeholder="Enter Job"
                 name='job_title'
                 value={newEmployee.job_title}
-                onChange={handleChange} />
+                onChange={handleChange} 
+                required/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formYearsOfExperience">
-                <Form.Label>Years of Experience</Form.Label>
+                <Form.Label>Experience Level (number of years)</Form.Label>
                 <Form.Control 
                 type="text" 
                 placeholder="Enter years of experience"
                 name='years_of_experience'
                 value={newEmployee.years_of_experience}
-                onChange={handleChange} />
+                onChange={handleChange} 
+                required/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formPortrait">
                 <Form.Label>Portrait</Form.Label>
                 <Form.Control 
                 type="url" 
-                placeholder="Enter an updated portrait"
+                placeholder="Enter an current portrait"
                 name='portrait'
                 value={newEmployee.portrait}
-                onChange={handleChange} />
+                onChange={handleChange} 
+                />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formWeeklySalary">
-                <Form.Label>Weekly Salary</Form.Label>
+                <Form.Label>Weekly Salary $</Form.Label>
                 <Form.Control
                     type="text"
                     placeholder="Enter weekly salary"
                     name='weekly_salary'
                     value={newEmployee.weekly_salary}
-                    onChange={handleChange} />
+                    onChange={handleChange} 
+                    required/>
             </Form.Group>
-            <Button variant="primary" type="submit" >
+            <Button variant="success" type="submit" >
                 Submit
             </Button>
             <Button variant='danger' href="http://localhost:3001/employees">
@@ -72,4 +77,4 @@ function NewForm({ handleAdd, newEmployee, setNewEmployee }) {
     )
 }
 
-export default NewForm
+export default NewEmployeeForm

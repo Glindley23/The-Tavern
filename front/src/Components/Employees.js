@@ -1,7 +1,7 @@
 import React, { useEffect, useState, } from "react"
 import { Button, ButtonGroup, Modal, Card } from 'react-bootstrap'
 import '../App.css';
-import NewForm from './NewForm'
+import NewEmployeeForm from './NewEmployeeForm'
 
 
 
@@ -92,11 +92,14 @@ function Employees() {
                     <Card.Text>
                         Weekly Salary: {employee.weekly_salary}
                     </Card.Text>
+                    
+                </Card.Body>
+                <Card.Footer>
                     <ButtonGroup variant='secondary'>
-                        <Button variant="warning">Edit</Button>
+                        <Button variant="success">Edit</Button>
                         <Button onClick={() => deleteEmployee(employee._id)} variant="danger">Delete</Button>
                     </ButtonGroup>
-                </Card.Body>
+                </Card.Footer>
             </Card>
         )
     })
@@ -104,16 +107,16 @@ function Employees() {
     //page render
     return (
         <main>
-            <h1>Employee List</h1>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+            <h1 className="componentText">Employee List</h1>
+            <Button variant="warning" className='newFormButton' onClick={handleShow}>
+                Add New Employee
             </Button>
 
             <Modal show={formShow} onHide={handleClose}>
                 <Modal.Header>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Employee Information</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><NewForm key="employee._id" handleAdd={handleAdd} newEmployee={newEmployee} 
+                <Modal.Body><NewEmployeeForm key="employee._id" handleAdd={handleAdd} newEmployee={newEmployee} 
                 setNewEmployee={setNewEmployee} formShow={formShow} setFormShow={setFormShow}/>
                 </Modal.Body>
             </Modal>

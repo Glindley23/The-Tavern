@@ -15,7 +15,7 @@ import Employees from './Components/Employees';
 import Equipment from './Components/Equipment';
 import Rooms from './Components/Rooms';
 import QuestBoard from './Components/QuestBoard';
-import NewForm from './Components/NewForm';
+import NewEmployeeForm from './Components/NewEmployeeForm';
 import './App.css';
 <link
   rel="stylesheet"
@@ -65,7 +65,7 @@ function App() {
             <Route path='/equipment' element={<Equipment />} />
             <Route path='/rooms' element={<Rooms />} />
             <Route path='/questboard' element={<QuestBoard />} />
-            <Route path= '/new' component={ NewForm } />
+            <Route path= '/new-employee' component={ NewEmployeeForm } />
           </Routes>
         </div>
       </Router>
