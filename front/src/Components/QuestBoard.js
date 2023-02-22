@@ -10,7 +10,7 @@ function newQuest() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
 function deleteQuest(quest_id) {
-    fetch(`http://localhost:3001/quest/${quest_id}`, {method: 'DELETE'})
+    fetch(`http://localhost:8080/quest/${quest_id}`, {method: 'DELETE'})
             .then(
                 response => {
                     return (
@@ -25,7 +25,7 @@ function Quest() {
     const [questData, setQuestData] = useState([])
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:3001/quest')
+        fetch('http://localhost:8080/quest')
             .then(
                 response => {
                     return response = response.json()
@@ -35,7 +35,7 @@ function Quest() {
     }
 
         , [])
-    console.log(questData);
+    
     let questList = questData.map((quest, index) => {
         return (
             <Card className='quest-card' key={index} style={{ width: '18rem'}}>

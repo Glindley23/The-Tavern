@@ -78,3 +78,12 @@
   color: white;
   padding-top: 100px;
 }
+
+.homeText {
+  -webkit-text-fill-color: #5b2522;
+  -webkit-text-stroke: 1px;
+  font-size: 50px;
+  font-weight: 1000;
+  color: white;
+  padding-top: 100px;
+}

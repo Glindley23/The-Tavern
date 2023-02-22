@@ -2,7 +2,6 @@ import React, { useEffect, useState, } from "react";
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Card from 'react-bootstrap/Card';
-import { createRoutesFromElements } from "react-router-dom";
 import '../App.css';
 
 
@@ -11,7 +10,7 @@ function newRoom() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
 function deleteRoom(room_id) {
-    fetch(`http://localhost:3001/room/${room_id}`, {method: 'DELETE'})
+    fetch(`http://localhost:8080/room/${room_id}`, {method: 'DELETE'})
             .then(
                 response => {
                     return (
@@ -26,7 +25,7 @@ function Room() {
     const [roomData, setRoomData] = useState([])
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:3001/room')
+        fetch('http://localhost:8080/room')
             .then(
                 response => {
                     return response = response.json()
@@ -36,7 +35,7 @@ function Room() {
     }
 
         , [])
-    console.log(roomData);
+    
     let roomList = roomData.map((room, index) => {
         return (
             <Card className='room-card' key={index} style={{ width: '18rem'}}>

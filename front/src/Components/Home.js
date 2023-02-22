@@ -11,7 +11,8 @@ function Home () {
          <Card.ImgOverlay>
            <Card.Title id='home-title'>Tavern Management</Card.Title>
            <Card.Text>
-             This is basic placeholder text about our awesome tavern management app.
+             <h2 class='homeText'>Manage your tavern with ease!</h2> 
+             <h3 class='homeText'>Whether you're an established business brewing and feeding the city, or a hub for all things adventuring, use this application to organize your tavern's inventory.</h3>
            </Card.Text>
          </Card.ImgOverlay>
        </Card>
