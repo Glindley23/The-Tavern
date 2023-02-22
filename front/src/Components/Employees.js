@@ -1,14 +1,9 @@
 import React, { useEffect, useState, } from "react"
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Card from 'react-bootstrap/Card';
+import { Button, ButtonGroup, Modal, Card } from 'react-bootstrap'
 import '../App.css';
 
 
-//When user clicks on button, toggle between hiding or showing new form
-function employeeForm() {
-    document.getElementById("dropdownForm").classList.toggle("show");
-}
+
 function deleteEmployee(employee_id) {
     fetch(`http://localhost:8080/employees/${employee_id}`, { method: 'DELETE' })
         .then(
@@ -22,8 +17,25 @@ function deleteEmployee(employee_id) {
 
 
 function Employees() {
+
+    //State and function for changing state on new (post) Form
+    const [formShow, setFormShow] = useState(false);
+    //const handle
+    const handleClose = () => setFormShow(false);
+    const handleShow = () => setFormShow(true);
+
+
     //setting state for employee data
     const [employeesData, setEmployeesData] = useState([])
+    const [newEmployee, setNewEmployee] = useState({
+        name: '',
+        job_title: '',
+        years_of_experience: '',
+        portrait: '',
+        weekly_salary: ''
+    })
+     
+
     //fetching data from backend
     useEffect(() => {
         fetch('http://localhost:8080/employees')
@@ -64,45 +76,24 @@ function Employees() {
     return (
         <main>
             <h1>Employee List</h1>
-            <div className="dropdown">
-                <Button onClick={employeeForm} className='new-button dropdown-basic-button' variant="outline-secondary">New Employee</Button>
-                <div id='dropdownForm' className="dropdown-content">
-                    <form method="POST" className='form' action='http://localhost:8080/employees'>
-                        <div className='form-group'>
-                            <label htmlFor="name">
-                                Name:
-                                <input className='form-control' id='name' type="text" name='name' required />
-                            </label>
-                        </div>
-                        <div className='form-group'>
-                            <label htmlFor='job_title'>
-                                Job Title:
-                                <input className='form-control' id='job_title' type="text" name='job_title' required />
-                            </label>
-                        </div>
-                        <div className='form-group'>
-                            <label htmlFor='years_of_experience'>
-                                Years of experience:
-                                <input className='form-control' id='years_of_experience' type="text" name='years_of_experience' required />
-                            </label>
-                        </div>
-                        <div className='form-group'>
-                            <label htmlFor='portrait'>
-                                Portrait
-                                <input className='form-control' id='portrait' type="url" name='portrait' />
-                            </label>
-                        </div>
+            <Button variant="primary" onClick={handleShow}>
+                Launch demo modal
+            </Button>
 
-                        <div className='form-group'>
-                            <label htmlFor='weekly_salary'>
-                                Weekly Salary:
-                                <input className='form-control' id='weekly_salary' type="text" name='weekly_salary' required />
-                            </label>
-                        </div>
-                        <Button as="input" type="submit" value="Add" />
-                    </form>
-                </div>
-            </div>
+            <Modal show={formShow} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" type='submit'>
+                        Add Employee
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <div className='row'>
                 {employeeList}
             </div>
