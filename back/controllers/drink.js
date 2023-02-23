@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
     await db.Drink.create(post)
     await post.save()
-    res.send(post)
+    
 })
 
 //get by id
