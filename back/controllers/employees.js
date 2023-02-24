@@ -15,16 +15,19 @@ router.get('/', (req, res) => {
 
 //CREATE NEW EMPLOYEE
 router.post('/', async (req, res) => {
-    const post = new db.Employee({
-        name: req.body.name,
-        job_title: req.body.job_title,
-        years_of_experience: req.body.years_of_experience,
-        portrait: req.body.portrait,
-        weekly_salary: req.body.weekly_salary
+    try {
+        const newEmployeeData  = req.body;
+        const newEmployee = await db.Employee.create(newEmployeeData)
+        res.status(201).json(newEmployee)
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
     })
-    await db.Employee.create(post)
-    await post.save()
-})
+
+
+
 
 //get by id
 router.get('/:id', async (req, res) => {
@@ -39,25 +42,22 @@ router.get('/:id', async (req, res) => {
 
 //PUT: Update Employee
 router.put('/:id', async(req,res)=>{
-   try {
-    const post = await db.Employee.findOne({ _id: req.params.id })
-    if (req.body.name) {
-        post.name = req.body.name
-    }
-    if (req.body.job_title) {
-        post.job_title = req.body.job_title
-    }
-    if (req.body.years_of_experience) {
-        post.years_of_experience = req.body.years_of_experience
-    }
-    if (req.body.portrait) {
-        post.portrait = req.body.portrait
-    }
-    if (req.body.weekly_salary) {
-        post.weekly_salary = req.body.weekly_salary
-    }
-    await post.save()
-    res.send(post)
+  
+  //const employee = req.body
+    try {
+    const {name, job_title, years_of_experience, portrait, weekly_salary } = req.body;
+    const updatedEmployee = await db.employees.update(
+        { name, job_title, years_of_experience, portrait, weekly_salary },
+        {
+            where: { id: req.params.id },
+            returning: true, // include the updated item in the response
+            plain: true, // return only the updated item, not a wrapper object
+          }
+    );
+    if (updatedEmployee[0] === 0) {
+        res.status(404)
+    } else 
+    res.json(updatedEmployee[1])
     }   
         catch {
     res.status(404)
