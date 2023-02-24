@@ -11,10 +11,12 @@ function Employees() {
 
     //State and function for changing state on new (post) Form
     const [formShow, setFormShow] = useState(false);
-    //const handle
+    const [editFormShow, setEditFormShow] = useState(false);
+    const [selectedEmployee, setSelectedEmployee] = useState(null);
     const handleClose = () => setFormShow(false);
     const handleShow = () => setFormShow(true);
-
+    const handleEditShow = () => setEditFormShow(true);
+    const handleEditClose = () => setEditFormShow(false);
 
     //setting state for employee data
     const [employeesData, setEmployeesData] = useState([])
@@ -28,7 +30,7 @@ function Employees() {
 
     //fetching data from backend
     useEffect(() => {
-        fetch('http://localhost:3001/employees')
+        fetch('http://localhost:8080/employees')
             .then(
                 response => {
                     return response = response.json()
@@ -40,7 +42,7 @@ function Employees() {
 
     const handleAdd = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3001/employees", {
+        fetch("http://localhost:8080/employees", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,7 +65,7 @@ function Employees() {
     }    
 
     function deleteEmployee(employee_id) {
-        fetch(`http://localhost:3001/employees/${employee_id}`, { method: 'DELETE' })
+        fetch(`http://localhost:8080/employees/${employee_id}`, { method: 'DELETE' })
             .then(
                 response => {
                     return (
@@ -74,7 +76,7 @@ function Employees() {
     }
 
     const handleEdit = (employee_id, updatedEmployee) => {
-        fetch(`http://localhost:3001/employees/${employee_id}`, {
+        fetch(`http://localhost:8080/employees/${employee_id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json",},
             body: JSON.stringify(updatedEmployee),
@@ -84,9 +86,11 @@ function Employees() {
               if (employee._id === employee_id) {
                 return { ...employee, ...updatedEmployee };
               }
-              return employeesData;
+              return employee;
             });
             setEmployeesData(updatedEmployee);
+            setEditFormShow(false);
+            setSelectedEmployee(null);
           })
           .catch((error) => console.error(error));
       };  
@@ -110,7 +114,10 @@ function Employees() {
                 </Card.Body>
                 <Card.Footer>
                     <ButtonGroup variant='secondary'>
-                        <Button variant="success">Edit</Button>
+                        <Button onClick={() => {
+                            setSelectedEmployee(employee._id)
+                            handleEditShow(true);
+                        }} variant="success">Edit</Button>
                         <Button onClick={() => deleteEmployee(employee._id)} variant="danger">Delete</Button>
                     </ButtonGroup>
                 </Card.Footer>
@@ -125,15 +132,30 @@ function Employees() {
             <Button variant="warning" className='newFormButton' onClick={handleShow}>
                 Add New Employee
             </Button>
-
             <Modal show={formShow} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Employee Information</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><NewEmployeeForm key="employee._id" handleAdd={handleAdd} newEmployee={newEmployee} 
-                setNewEmployee={setNewEmployee} formShow={formShow} setFormShow={setFormShow}/>
+                <Modal.Body><NewEmployeeForm key="employee._id" handleAdd={handleAdd} newEmployee={newEmployee}
+                    setNewEmployee={setNewEmployee} formShow={formShow} setFormShow={setFormShow} />
                 </Modal.Body>
             </Modal>
+
+            <Modal show={editFormShow} onHide={() => {
+                
+            }}>
+                <Modal.Header>
+                    <Modal.Title>Edit </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {selectedEmployee && (
+                        <NewEditForm
+                            selectedEmployee={selectedEmployee}
+                            handleEdit={handleEdit}
+                        />
+                    )}
+                </Modal.Body>
+                    </Modal>
             <div className='row'>
                 {employeeList}
             </div>
