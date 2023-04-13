@@ -1,0 +1,32 @@
+$primary-color: #d4c398;
+$secondary-color: #604020;
+$tertiary-color: antiquewhite;
+$btn-color: #61dafb;
+$font-stack: Trebuchet MS, Arial, sans-serif;
+$header: {
+    min-height: 100vh,
+    display: flex,
+    flex-direction: column,
+    align-items: center,
+    justify-content: center,
+    font-size: calc(10px + 2vmin),
+    color: white,
+    padding: 100px;
+};
+$border-dark: rgba($base-color, 0.88);
+$link-color: #61dafb;
+$main-banner-text: {
+    -webkit-text-fill-color: #5b2522,
+    -webkit-text-stroke: 1px,
+    font-weight: 1000,
+    color: white,
+    padding-top: 100px;
+};
+$employee-portrait: {
+    max-width: 200px,
+    max-height: 200px,
+    padding: 5px,
+    margin-left: 30px,
+    justify-content: center,
+    border-radius: 20px;
+}

@@ -1,0 +1,18 @@
+@import "config";
+
+@mixin set-bg($color) {
+    background-color: $color;
+    color: text-color-picker($color)
+}
+
+@mixin centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @mixin li {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+  }

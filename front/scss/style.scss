@@ -1,0 +1,89 @@
+@import "config";
+@import "functions";
+@import "mixins";
+
+.App {
+    text-align: center;
+  }
+  
+  .App-header {
+    @include set-bg(#282c34);
+    @include centered;
+    min-height: 100vh;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding: 100px;
+  }
+  
+  .App-link {
+    @include set-bg($link-color);
+  }
+  
+  #tavern_brand {
+    height: 90px;
+    width: 90px
+  }
+  
+  .Navbar {
+    margin-left: 100px;
+  }
+  
+  .dropdown-basic-button {
+    background-color: $secondary-color;
+    color: white;
+    border-radius: 7px;
+  }
+  .dropdown-basic-button:hover, .dropdown-basic-button:focus {
+    @include set-bg($primary-color);
+  }
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    justify-content: center;
+    display: inline;
+  }
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: -50px;
+    @include set-bg($secondary-color);
+    color: $tertiary-color;
+    min-width: 230px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  /* Show the dropdown menu (use JS to add this class to the 
+  .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}
+  
+  .employee-portrait {
+    @include employee-portrait;
+  }
+  
+  .employee-card {
+    margin-left: 25px;
+    margin-bottom: 25px;
+    @include set-bg($primary-color);
+  }
+  
+  #home-title {
+    @include main-banner-text;
+    font-size: 100px;
+  }
+  
+  .homeText {
+    @include main-banner-text;
+    font-size: 50px;
+  }
+  
+  .componentText {
+    @include main-banner-text;
+    font-size: 50px;
+  }
+  
+  .newFormButton {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }

@@ -1,0 +1,23 @@
+@import "config";
+
+
+@function text-color-picker($color) {
+    @if(lightness($color) > 70) {
+        @return black;
+      } @else {
+        @return white;
+      }
+}
+
+$total: 8;
+$col: 3;
+
+@function column-width() {
+@return percentage($col/$total);
+}
+
+@function squared($height) {
+@return {
+    width: $height;
+    height: $height;
+}
