@@ -4,8 +4,8 @@ const bodyParser = require('body-parser')
 const pino = require('express-pino-logger')();
 const express = require('express');
 //const methodOverride = require('method-override')
-const mongoose = require ('mongoose')
-const db = require('./models')
+//const mongoose = require ('mongoose')
+//const db = require('./models')
 const cors = require('cors')
 const app = express();
 
@@ -23,7 +23,7 @@ app.use('/quest', require('./controllers/quest'))
 app.use('/room', require('./controllers/room'))
 app.use('/drink',require('./controllers/drink'))
 
-app.get('/api/greeting', (req,res) => {
+app.get('/api/greeting', (req: any,res: any) => {
     const name = req.query.name || 'World';
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
