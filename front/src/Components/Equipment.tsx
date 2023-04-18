@@ -7,9 +7,9 @@ import '../App.css';
 
 //When user clicks on button, toggle between hiding or showing new form
 function newEquipment() {
-    document.getElementById("dropdownForm").classList.toggle("show");
+        document.getElementById("dropdownForm").classList.toggle("show");
 }
-function deleteEquipment(equipment_id) {
+function deleteEquipment(equipment_id: any) {
     fetch(`http://localhost:8080/equipment/${equipment_id}`, {method: 'DELETE'})
             .then(
                 response => {
@@ -28,7 +28,7 @@ function Equipment() {
         fetch('http://localhost:8080/equipment')
             .then(
                 response => {
-                    return response = response.json()
+                    return response: Response = response.json()
                 }).then(data => {
                     setEquipmentData(data)
                 })

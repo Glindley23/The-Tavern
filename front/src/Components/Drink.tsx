@@ -9,7 +9,7 @@ import '../App.css';
 function newDrink() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
-function deleteDrink(drink_id) {
+function deleteDrink(drink_id: any) {
     fetch(`http://localhost:8080/drink/${drink_id}`, {method: 'DELETE'})
             .then(
                 response => {
@@ -28,7 +28,7 @@ function Drink() {
         fetch('http://localhost:8080/drink')
             .then(
                 response => {
-                    return response = response.json()
+                    return response.json()
                 }).then(data => {
                     setDrinkData(data)
                 })

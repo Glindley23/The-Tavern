@@ -1,3 +1,4 @@
+import React = require("react")
 import Card from "react-bootstrap/Card"
 import '../App.css'
 function Home () {

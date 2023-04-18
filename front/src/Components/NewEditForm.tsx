@@ -1,16 +1,16 @@
 import React = require('react')
-import useState from "react";
+import { useState } from "react";
 import { Form, Button } from 'react-bootstrap';
 import '../App.css';
 
-function NewEditForm(props) {
+function NewEditForm(props: any) {
     const [employeeName, setName] = useState([props.employees.name]);
     const [jobTitle, setJobTitle] = useState([props.employees.job_title]);
     const [experience, setExperience] = useState([props.employees.years_of_experience]);
     const [employeePortrait, setPortrait] = useState([props.employees.portrait]);
     const [salary, setSalary] = useState([props.employees.weekly_salary]);
 
-const handleSubmit = (event) => {
+const handleSubmit = (event: any) => {
     event.preventDefault();
     const updatedEmployee = {
       name: employeeName,
@@ -22,7 +22,7 @@ const handleSubmit = (event) => {
     props.handleEdit(props.employees._id, updatedEmployee);
     };
     
-    const handleClick = (event) => {
+    const handleClick = (event: any) => {
         event.stopPropagation();
       }
 
@@ -35,7 +35,7 @@ const handleSubmit = (event) => {
               <Form.Control
                 type="text"
                 value={employeeName}
-                onChange={(event) => setName(event.target.value)}
+                onChange={(event: any) => setName(event.target.value)}
               />
             </Form.Group>
     
@@ -44,7 +44,7 @@ const handleSubmit = (event) => {
               <Form.Control
                 type="text"
                 value={jobTitle}
-                onChange={(event) => setJobTitle(event.target.value)}
+                onChange={(event: any) => setJobTitle(event.target.value)}
               />
             </Form.Group>
     
@@ -53,7 +53,7 @@ const handleSubmit = (event) => {
               <Form.Control
                 type="number"
                 value={experience}
-                onChange={(event) => setExperience(event.target.value)}
+                onChange={(event: any) => setExperience(event.target.value)}
               />
             </Form.Group>
 
@@ -62,7 +62,7 @@ const handleSubmit = (event) => {
               <Form.Control
                 type="url"
                 value={employeePortrait}
-                onChange={(event) => setPortrait(event.target.value)}
+                onChange={(event: any) => setPortrait(event.target.value)}
               />
             </Form.Group>
     
@@ -72,7 +72,7 @@ const handleSubmit = (event) => {
                 as="textarea"
                 rows={3}
                 value={salary}
-                onChange={(event) => setSalary(event.target.value)}
+                onChange={(event: any) => setSalary(event.target.value)}
               />
             </Form.Group>
     

@@ -28,7 +28,7 @@ function Room() {
         fetch('http://localhost:8080/room')
             .then(
                 response => {
-                    return response = response.json()
+                    return response.json()
                 }).then(data => {
                     setRoomData(data)
                 })
@@ -36,7 +36,7 @@ function Room() {
 
         , [])
     
-    let roomList = roomData.map((room, index) => {
+    let roomList = roomData.map((room: any, index: any) => {
         return (
             <Card className='room-card' key={index} style={{ width: '18rem'}}>
             
@@ -53,7 +53,7 @@ function Room() {
                     Cost Per Night: {room.cost_per_night}
                     </Card.Text>
 
-                    <ButtonGroup variant='secondary'>
+                    <ButtonGroup >
                         <Button variant="warning">Edit</Button>
                         <Button onClick={() => deleteRoom(room._id)} variant="danger">Delete</Button> 
                     </ButtonGroup>

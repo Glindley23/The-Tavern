@@ -1,4 +1,5 @@
-import React, { useEffect, useState, } from "react"
+import React = require("react");
+import { useEffect, useState, } from "react"
 import { Button, ButtonGroup, Modal, Card } from 'react-bootstrap'
 import '../App.css';
 import NewEmployeeForm from './NewEmployeeForm'
@@ -11,15 +12,15 @@ function Employees() {
 
     //State and function for changing state on new (post) Form
     const [formShow, setFormShow] = useState(false);
-    const [editFormShow, setEditFormShow] = useState(false);
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const [editFormShow, setEditFormShow] = useState<boolean>(false);
+    const [selectedEmployee, setSelectedEmployee] = useState();
     const handleClose = () => setFormShow(false);
     const handleShow = () => setFormShow(true);
     const handleEditShow = () => setEditFormShow(true);
     const handleEditClose = () => setEditFormShow(false);
 
     //setting state for employee data
-    const [employeesData, setEmployeesData] = useState([])
+    const [employeesData, setEmployeesData] = useState<any[]>([]);
     const [newEmployee, setNewEmployee] = useState({
         name: '',
         job_title: '',
@@ -33,14 +34,14 @@ function Employees() {
         fetch('http://localhost:8080/employees')
             .then(
                 response => {
-                    return response = response.json()
+                    return response.json()
                 }).then(data => {
                     setEmployeesData(data)
                 })
     }
         , []);
 
-    const handleAdd = (event) => {
+    const handleAdd = (event: any) => {
         event.preventDefault();
         fetch("http://localhost:8080/employees", {
             method: 'POST',
@@ -50,7 +51,7 @@ function Employees() {
             body: JSON.stringify(newEmployee)
         })
         .then((response) => response.json())
-        .then((data) => {
+        .then((data: any) => {
             setEmployeesData([...employeesData, data]);
             setNewEmployee({
                 name: '',
@@ -64,7 +65,7 @@ function Employees() {
         .catch((error) => console.error(error));
     }    
 
-    function deleteEmployee(employee_id) {
+    function deleteEmployee(employee_id: any) {
         fetch(`http://localhost:8080/employees/${employee_id}`, { method: 'DELETE' })
             .then(
                 response => {
@@ -75,14 +76,14 @@ function Employees() {
                 })
     }
 
-    const handleEdit = (employee_id, updatedEmployee) => {
+    const handleEdit = (employee_id: any, updatedEmployee: any ) => {
         fetch(`http://localhost:8080/employees/${employee_id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json",},
             body: JSON.stringify(updatedEmployee),
         })
           .then(() => {
-            const updatedEmployee = employeesData.map((employee) => {
+            const updatedEmployee: any = employeesData.map((employee) => {
               if (employee._id === employee_id) {
                 return { ...employee, ...updatedEmployee };
               }
@@ -113,12 +114,12 @@ function Employees() {
                     
                 </Card.Body>
                 <Card.Footer>
-                    <ButtonGroup variant='secondary'>
+                    <ButtonGroup>
                         <Button onClick={() => {
                             setSelectedEmployee(employee._id)
-                            handleEditShow(true);
+                            handleEditShow();
                         }} variant="success">Edit</Button>
-                        <Button onClick={() void => deleteEmployee(employee._id)} variant="danger">Delete</Button>
+                        <Button onClick={() => deleteEmployee(employee._id)} variant="danger">Delete</Button>
                     </ButtonGroup>
                 </Card.Footer>
             </Card>

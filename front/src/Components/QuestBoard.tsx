@@ -9,7 +9,7 @@ import '../App.css';
 function newQuest() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
-function deleteQuest(quest_id) {
+function deleteQuest(quest_id: any) {
     fetch(`http://localhost:8080/quest/${quest_id}`, {method: 'DELETE'})
             .then(
                 response => {
@@ -28,7 +28,7 @@ function Quest() {
         fetch('http://localhost:8080/quest')
             .then(
                 response => {
-                    return response = response.json()
+                    return  response.json()
                 }).then(data => {
                     setQuestData(data)
                 })
@@ -36,7 +36,7 @@ function Quest() {
 
         , [])
     
-    let questList = questData.map((quest, index) => {
+    let questList = questData.map((quest: any, index: any) => {
         return (
             <Card className='quest-card' key={index} style={{ width: '18rem'}}>
             
@@ -53,7 +53,7 @@ function Quest() {
                     Status: {quest.status}
                     </Card.Text>
 
-                    <ButtonGroup variant='secondary'>
+                    <ButtonGroup >
                         <Button variant="warning">Edit</Button>
                         <Button onClick={() => deleteQuest(quest._id)} variant="danger">Delete</Button> 
                     </ButtonGroup>

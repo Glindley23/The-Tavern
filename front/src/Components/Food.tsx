@@ -1,4 +1,5 @@
-import React, { useEffect, useState, } from "react";
+import React = require("react");
+import { useEffect, useState, } from "react";
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Card from 'react-bootstrap/Card';
@@ -9,7 +10,7 @@ import '../App.css';
 function newFood() {
     document.getElementById("dropdownForm").classList.toggle("show");
 }
-function deleteFood(food_id) {
+function deleteFood(food_id: any) {
     fetch(`http://localhost:8080/food/${food_id}`, {method: 'DELETE'})
             .then(
                 response => {
@@ -28,7 +29,7 @@ function Food() {
         fetch('http://localhost:8080/food')
             .then(
                 response => {
-                    return response = response.json()
+                    return response.json()
                 }).then(data => {
                     setFoodData(data)
                 })
@@ -36,7 +37,7 @@ function Food() {
 
         , [])
     
-    let foodList = foodData.map((food, index) => {
+    let foodList = foodData.map((food: any, index: any) => {
         return (
             <Card className='food-card' key={index} style={{ width: '18rem'}}>
             
@@ -55,7 +56,7 @@ function Food() {
                     Sell Price: {food.sell_price}
                     </Card.Text>
 
-                    <ButtonGroup variant='secondary'>
+                    <ButtonGroup >
                         <Button variant="warning">Edit</Button>
                         <Button onClick={() => deleteFood(food._id)} variant="danger">Delete</Button> 
                     </ButtonGroup>
