@@ -118,7 +118,7 @@ function Employees() {
                             setSelectedEmployee(employee._id)
                             handleEditShow(true);
                         }} variant="success">Edit</Button>
-                        <Button onClick={() => deleteEmployee(employee._id)} variant="danger">Delete</Button>
+                        <Button onClick={() void => deleteEmployee(employee._id)} variant="danger">Delete</Button>
                     </ButtonGroup>
                 </Card.Footer>
             </Card>
